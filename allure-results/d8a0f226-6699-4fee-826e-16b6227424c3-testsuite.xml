@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1756760945104' stop='1756760945200'>
+    <name>User | Flow (Mocha)</name>
+    <title>User | Flow (Mocha)</title>
+    <test-cases>
+        <test-case start='1756760945104' status='passed' stop='1756760945200'>
+            <name>List users page 2</name>
+            <title>List users page 2</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

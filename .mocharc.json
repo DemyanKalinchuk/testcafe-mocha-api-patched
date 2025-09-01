@@ -1,0 +1,7 @@
+{
+  "timeout": 20000,
+  "reporter": "mocha-allure-reporter",
+  "require": [
+    "dotenv/config"
+  ]
+}

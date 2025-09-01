@@ -1,0 +1,6 @@
+node_modules/
+reports/
+.allure/
+.allure_history/
+.env
+test-results/

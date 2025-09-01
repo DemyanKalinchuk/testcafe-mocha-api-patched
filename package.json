@@ -1,0 +1,23 @@
+{
+  "name": "testcafe-mocha-api",
+  "version": "1.0.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:tc": "testcafe",
+    "test:tc:headed": "testcafe",
+    "test:mocha": "ALLURE_RESULTS_DIR=reports/allure mocha \"tests/mocha/**/*.spec.js\" --reporter mocha-allure-reporter --timeout 20000",
+    "test:all": "npm run test:tc && npm run test:mocha",
+    "allure:serve": "allure serve reports/allure"
+  },
+  "devDependencies": {
+    "axios": "^1.7.7",
+    "chai": "^5.1.1",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.6.1",
+    "joi": "^17.13.3",
+    "mocha": "^10.6.0",
+    "mocha-allure-reporter": "^1.4.0",
+    "testcafe": "^3.6.0"
+  }
+}

@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1756760944916' stop='1756760945102'>
+    <name>Smoke | Auth (Mocha)</name>
+    <title>Smoke | Auth (Mocha)</title>
+    <test-cases>
+        <test-case start='1756760944916' status='broken' stop='1756760945102'>
+            <name>Login success</name>
+            <title>Login success</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Login failed: 400 {"error":"Empty request body","message":"Request body cannot be empty for JSON endpoints"}</message>
+                <stack-trace>Error: Login failed: 400 {"error":"Empty request body","message":"Request body cannot be empty for JSON endpoints"}
+                    at UseApiSteps.login (file:///Users/user_kalinchuk/Desktop/testcafe-mocha-api-patched/src/steps/useApiSteps.js:15:37)
+                    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+                    at async Context.&lt;anonymous> (file:///Users/user_kalinchuk/Desktop/testcafe-mocha-api-patched/tests/mocha/smoke/authLogin.spec.js:11:19)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
