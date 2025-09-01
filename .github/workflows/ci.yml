@@ -1,17 +1,70 @@
-name: API tests (TestCafe + Mocha)
-on: [push, pull_request]
+name: "API tests (Parallel: TestCafe + Mocha)"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+# All jobs below run in parallel by default
 jobs:
-  test:
+  testcafe:
+    name: TestCafe (node ${{ matrix.node }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 20]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - run: npm ci
-      - run: npm run test:tc
-      - run: npm run test:mocha
-      - uses: actions/upload-artifact@v4
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run TestCafe
+        run: npm run test:tc
+
+      - name: Upload Allure results (TestCafe)
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: allure-results
+          name: allure-results-testcafe-node-${{ matrix.node }}
           path: reports/allure
+          retention-days: 7
+
+  mocha:
+    name: Mocha (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 20]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run Mocha
+        env:
+          ALLURE_RESULTS_DIR: reports/allure
+        run: npm run test:mocha
+
+      - name: Upload Allure results (Mocha)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-mocha-node-${{ matrix.node }}
+          path: reports/allure
+          retention-days: 7
